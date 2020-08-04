@@ -34,6 +34,9 @@ print(data.head())
 temp = data['Temp (C)'].values
 print("ST DEV:", statistics.stdev(temp))
 print("Mean:", statistics.mean(temp))
+print("ST DEV:", np.std(temp))
+print("Mean:", np.mean(temp))
+
 # define dependent variable - humidity
 relHum = data['Rel Hum (%)'].values
 #print(relHum)
