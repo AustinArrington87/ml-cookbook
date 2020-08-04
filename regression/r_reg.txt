@@ -1,0 +1,35 @@
+> setwd("~/ml-cookbook/regression")
+> weather <- read.csv("weather_2012.csv")
+> View(weather)
+> colnames(weather)
+[1] "Date.Time"          "Temp..C."           "Dew.Point.Temp..C." "Rel.Hum...."        "Wind.Spd..km.h."    "Visibility..km."   
+[7] "Stn.Press..kPa."    "Weather" 
+
+> names(weather)[names(weather) == "Date.Time"] <- "date_time"
+> names(weather)[names(weather) == "Temp..C."] <- "temp"
+> names(weather)[names(weather) == "Dew.Point.Temp..C."] <- "dewPoint"
+> names(weather)[names(weather) == "Rel.Hum...."] <- "relHum"
+
+
+# simple linear Reg
+
+> relHumMod1 <- lm(relHum ~ temp, data= weather)
+> summary(relHumMod1)
+
+# multiple Reg 
+> relHumMod2 <- lm(relHum ~ temp + dewPoint, data=weather)
+> summary(relHumMod2)
+
+# generalized linear 
+
+> glmMod1 <- glm(relHum ~ dewPoint, data=weather)
+> summary(glmMod1)
+
+#  polynomial regression 
+> pH_Aug2019$raw_field_sample2 = pH_Aug2019$raw_field_sample^2
+> poly1 = lm(formula = lab_prediction ~ raw_field_sample  + raw_field_sample2 + raw_field_sample3 + raw_field_sample4, data=pH_Aug2019)
+
+
+# Logarithmic Model 
+
+log1 <- lm(lab_prediction ~ log(raw_field_sample), data=pH_Aug2019)
