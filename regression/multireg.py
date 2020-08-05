@@ -18,6 +18,9 @@ print("R2:", r_sq)
 print("intercept:", model.intercept_)
 print('slope:', model.coef_)
 
+y_pred = model.predict(x)
+print('predicted response:', y_pred, sep='\n')
+
 ### Ingest Data
 data = pd.read_csv('weather_2012.csv')
 print(data.head())
@@ -35,7 +38,7 @@ tempList = list(temp)
 dewPointList = list(dewPoint)
 
 indVars = [list(x) for x in zip(tempList, dewPointList)]
-print(indVars)
+#print(indVars)
 
 indVars = np.array(indVars)
 
